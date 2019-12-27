@@ -4,7 +4,7 @@
  :toc false
 }
 
-== Why all the effort?
+## Why all the effort?
 
 Online task lists are dissappearing left and right (for example Astrid
 and Wunderlist). You want your tasks under your control which means:
@@ -20,18 +20,17 @@ After some searching I found https://taskwarrior.org/[Taskwarrior]
 which not only provides a flexible plain text task storage solution, but
 it also provide a very robust syncing solution with `taskd`.
 
-== The set-up
+## The set-up
 
 I use my own taskd server on a Archlinux based VPS. For now I try to
 stay away from user defined attributes (UDAs) as much as possible to
 keep the setup simple.
 
-=== Accessing the tasks
+### Accessing the tasks
 
-==== Linux CLI
+#### Linux CLI
 
-[source,nim]
-----
+``` nim
 
 import os
 import sequtils
@@ -44,22 +43,21 @@ var cmdArgs =  commandLineParams()
 var shellCmd = r"bash -c ""task "  & cmdArgs & "\""
 quit(os.execShellCmd(shellCmd))
 
-----
+```
 
-==== Web interface
+### Web interface
 
-As a web interface I used http://inthe.am[inthe.am] but even though
+As a web interface I used [inthe.am](http://inthe.am) but even though
 the code is open source, that site is not under my control and thus
 could disappear at any time.
 
 Instead I now use
-https://github.com/theunraveler/taskwarrior-web[taskwarrior-web]. This
+[taskwarrior-web](https://github.com/theunraveler/taskwarrior-web). This
 is intended for localhost usage and as a result has no authentication.
 To make it safe to open this from my own website, I have put it behind a
 nginx reverse proxy with basic HTTP authentication.
 
-[source,nginx]
-----
+``` nginx
 server {
     listen 443 ssl;
     ssl_certificate /etc/letsencrypt/live/mpcjanssen.nl/fullchain.pem;
@@ -75,13 +73,12 @@ server {
         auth_basic_user_file /etc/nginx/.htpasswd;
     }
 }
-----
+````
 
 I start the ruby gem itself using the following user systemd script at
 `~/.config/systemd/user/taskweb@.service`:
 
-[source,ini]
-----
+``` ini
 [Unit]
 Description=Taskwarrior web
 
@@ -90,9 +87,9 @@ Type=simple
 SuccessExitStatus=0 1
 
 ExecStart=/home/mpcjanssen/.gem/ruby/2.4.0/bin/task-web -o 127.0.0.1 -d -F
-----
+```
 
-==== Android
+#### Android
 
 Android has two good clients already [Taskwarrior for
 Android](https://play.google.com/store/apps/details?id=kvj.taskw&hl=en)
@@ -102,14 +99,13 @@ However they are missing quite some functionallity I have implemented in
 my `todo.txt` app Simpletask. So I am planning to support Taskwarrior in
 Simpletask.
 
-==== Capturing tasks
+### Capturing tasks
 
 For capturing tasks, I either use the CLI tools, or I use the
 org-protocl browser plugins with a custom org-protocl handler script in
 Tcl:
 
-[source,tcl]
-----
+``` tcl
 puts "Handling org-protocol call"
 
 proc invalidcall {} {
@@ -191,12 +187,11 @@ switch -exact -- $action {
   }
 }
 
-----
+```
 
 To register the handler use:
 
-[source,reg]
-----
+``` reg
 REGEDIT4
 
 [HKEY_CLASSES_ROOT\org-protocol]
@@ -206,6 +201,5 @@ REGEDIT4
 [HKEY_CLASSES_ROOT\org-protocol\shell\open]
 [HKEY_CLASSES_ROOT\org-protocol\shell\open\command]
 @="\"C:\\Bin\\org-protocol-handler.exe\" \"%1\""
-
-----
+```
 

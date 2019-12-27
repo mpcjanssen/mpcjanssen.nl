@@ -4,15 +4,15 @@
  :toc false
 }
 
-== Note to self
+## Note to self
 
 NOTE: Focus on the process not on the tools!!
 
-== Process
+## Process
 
-=== Ubiquitous capture
+### Ubiquitous capture
 
-=== Open formats
+### Open formats
 
 I do not want my stuff ending up in some closed database or format which
 is not easily transferable to something else. This means that for
@@ -27,7 +27,7 @@ is less stringent. Tasks are generally easy to export and less
 longlived. In this case having a good application/tool to do task
 management is more important.
 
-=== Tools
+### Tools
 
 Use tools that are intended for the purpose. For instance using Evernote
 as a task list is a poor fit and doesn't work very well.
