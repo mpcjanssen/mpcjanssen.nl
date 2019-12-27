@@ -13,37 +13,37 @@
 (def ^:private ^:static renderer (.build (HtmlRenderer/builder)))
 (def ^:private ^:static encoder  (net.sourceforge.plantuml.code.TranscoderSmart.))
 
-(defn plantuml->markdown [uml]
+(defn plantuml->markdown [uri uml]
   (let [code (.encode encoder uml)]
-     (str "https://plantuml.mpcjanssen.nl/svg/" code)))
+     (str uri "/svg/" code)))
 
-(def ^:private ^:static  v (proxy [AbstractVisitor] []
-  (visit [block]
-    (if (and 
-         (instance? FencedCodeBlock block)
-         (= (.getInfo block) "plantuml"))
-       (do
-        (.insertAfter block (Image. 
-                             (plantuml->markdown (.getLiteral block))
-                             "plantuml"))
-        (.unlink block))
-      (.visitChildren this block)))))
+(defn v [uri] 
+  (proxy [AbstractVisitor] []
+    (visit [block]
+      (if (and 
+            (instance? FencedCodeBlock block)
+            (= (.getInfo block) "plantuml"))
+          (do
+           (.insertAfter block (Image. 
+                                (plantuml->markdown uri (.getLiteral block))
+                                "plantuml"))
+           (.unlink block))
+          (.visitChildren this block)))))
 
 (defn markdown
-  "Returns a Markdown (https://daringfireball.net/projects/markdown/)
-  implementation of the Markup protocol."
   []
   (reify Markup
     (dir [this] "md")
     (ext [this] ".md")
     (render-fn [this]
       (fn [rdr config]
+        (println config)
         (let [s (->> (java.io.BufferedReader. rdr)
                  (line-seq)
                  (s/join "\n"))
               d (.parse parser s)
-              _ (.accept d v)]
-              (.render renderer d))))))
+              _ (.accept d (v (:plantuml-url config)))]
+             (.render renderer d))))))
 
 (defn init []
   (swap! markup-registry conj (markdown)))
