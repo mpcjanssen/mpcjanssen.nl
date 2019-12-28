@@ -50,7 +50,6 @@
               d (.parse parser s)
               _ (.accept d (v (:plantuml-url config)))
               p (.render renderer d)]
-          (println p)
           p)))))
 
 (defn init []
