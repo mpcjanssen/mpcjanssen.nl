@@ -8,3 +8,6 @@ sub:
    
 server: sub
 	lein ring server
+
+deploy: cli
+	scp -r public ssh.mpcjanssen.nl:/var/www/mpcjanssen/

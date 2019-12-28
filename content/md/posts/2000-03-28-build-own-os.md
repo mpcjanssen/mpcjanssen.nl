@@ -71,7 +71,7 @@ boot sector which is 200h=512 bytes big) is loaded in memory at location
 so hard, was it ? So lets try to write or own boot sector which only
 displays:
 
-``` {.sourceCode .text}
+``` 
 NO BOOT DISK
 ```
 
@@ -168,7 +168,7 @@ OK that seems pretty straightforward, so let's try to put it to
 practice. In the following piece of code I am assuming you use a 3,5" HD
 disk.
 
-``` {.sourceCode .nasm}
+```nasm
 ;------------------------------------------------------------------------------------------
 ; dosboot.asm
 ; demonstrates getting control after the compu has booted
@@ -262,7 +262,7 @@ through a segment:offset address (the so called *logical address*).
 Calculation of the *physical address* (the actual byte number in memory)
 is performed in the following way:
 
-$$physical address = 10h*segment+offset$$
+    physical address = 10h*segment+offset
 
 For example if we take segment 9000h and offset 8000h (logical address
 9000:8000h) we get physical address
@@ -433,7 +433,7 @@ segments of 4 GB, a code and a data segment, which completely overlap in
 memory. (So it is still possible, though not advisable, to write self
 modifying code):
 
-``` {.sourceCode .nasm}
+``` .nasm
 gdtr                               ;this will be loaded in the GDTR
    dw gdt_end-gdt-1                ;length of gdt
    dd gdt                          ;linear, physical address of gdt 
@@ -617,7 +617,7 @@ some comments) I think Tran originally wrote this code for use in his
 PMode protected mode wrapper. The piece of code conains a function
 EnableA20 which should do exactly that. So here we go: &lt;/p&gt;
 
-``` {.sourceCode .nasm}
+``` .nasm
 enablea20kbwait:                      ;wait for safe to write to 8042
    xor cx,cx                          ;loop a maximum of FFFFh times
 enablea20kbwaitl0:
@@ -783,7 +783,8 @@ floppy disk? First of all the bootimage has to be read from the hard
 disk and stored in memory. Then the buffer containing the bootsector has
 to be written to the floppy disk.&lt;/p&gt;
 
-&lt;/p&gt;&lt;pre&gt;;------------------------------------------------------------------------------------------
+``` nasm
+------------------------------------------------------------------------------------------
 ; wbs.asm Write Boot Sector ; ; writes a binary file from harddisk to
 the bootsector of floppy 0 (a:) ; ; compile with NASM to binary file
 (nasm is assumed to be in your path) ; nasm wbs.asm -o wbs.com ; ;
@@ -848,6 +849,8 @@ Error:
 :   mov ah,0x09 mov dx,ErrorOpen int 0x21 jmp Exit
 
 section .bss Infile: resb 80 Handle: resb 1 FileBuffer: resb 0x200
+
+```
 &lt;/pre&gt;
 
 &lt;/p&gt;&lt;center&gt;&lt;h2&gt;11. All

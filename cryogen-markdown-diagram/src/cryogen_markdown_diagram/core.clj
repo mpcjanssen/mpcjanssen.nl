@@ -2,15 +2,22 @@
   (:require [cryogen-core.markup :refer [markup-registry rewrite-hrefs]]
             [clojure.string :as s])
   (:import 
-    (cryogen_core.markup Markup)
-    (org.commonmark.parser Parser)
-    (org.commonmark.node AbstractVisitor)
-    (org.commonmark.node FencedCodeBlock)
-    (org.commonmark.node Image)
-    (org.commonmark.renderer.html HtmlRenderer)))
+   (cryogen_core.markup Markup)
+   (org.commonmark.ext.heading.anchor HeadingAnchorExtension)
+   
+   (org.commonmark.parser Parser)
+   (org.commonmark.node AbstractVisitor)
+   (org.commonmark.node FencedCodeBlock)
+   (org.commonmark.node Image)
+   (org.commonmark.renderer.html HtmlRenderer)))
 
 (def ^:private ^:static parser (.build (Parser/builder)))
-(def ^:private ^:static renderer (.build (HtmlRenderer/builder)))
+(def ^:private ^:static renderer 
+ (.build 
+  (.extensions  
+   (HtmlRenderer/builder) 
+   (java.util.ArrayList. (list (HeadingAnchorExtension/create))))))
+
 (def ^:private ^:static encoder  (net.sourceforge.plantuml.code.TranscoderSmart.))
 
 (defn plantuml->markdown [uri uml]
@@ -37,13 +44,14 @@
     (ext [this] ".md")
     (render-fn [this]
       (fn [rdr config]
-        (println config)
         (let [s (->> (java.io.BufferedReader. rdr)
-                 (line-seq)
-                 (s/join "\n"))
+                     (line-seq)
+                     (s/join "\n"))
               d (.parse parser s)
-              _ (.accept d (v (:plantuml-url config)))]
-             (.render renderer d))))))
+              _ (.accept d (v (:plantuml-url config)))
+              p (.render renderer d)]
+          (println p)
+          p)))))
 
 (defn init []
   (swap! markup-registry conj (markdown)))
