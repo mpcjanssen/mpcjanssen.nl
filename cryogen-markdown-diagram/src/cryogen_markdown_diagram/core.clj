@@ -4,7 +4,6 @@
   (:import 
    (cryogen_core.markup Markup)
    (org.commonmark.ext.heading.anchor HeadingAnchorExtension)
-   
    (org.commonmark.parser Parser)
    (org.commonmark.node AbstractVisitor)
    (org.commonmark.node FencedCodeBlock)
@@ -20,11 +19,11 @@
 
 (def ^:private ^:static encoder  (net.sourceforge.plantuml.code.TranscoderSmart.))
 
-(defn plantuml->markdown [uri uml]
+(defn plantuml->url [server uml]
   (let [code (.encode encoder uml)]
-     (str uri "/svg/" code)))
+     (str server "/svg/" code)))
 
-(defn v [uri] 
+(defn plantuml-visitor [server-url] 
   (proxy [AbstractVisitor] []
     (visit [block]
       (if (and 
@@ -32,7 +31,7 @@
             (= (.getInfo block) "plantuml"))
           (do
            (.insertAfter block (Image. 
-                                (plantuml->markdown uri (.getLiteral block))
+                                (plantuml->url server-url (.getLiteral block))
                                 "plantuml"))
            (.unlink block))
           (.visitChildren this block)))))
@@ -47,10 +46,11 @@
         (let [s (->> (java.io.BufferedReader. rdr)
                      (line-seq)
                      (s/join "\n"))
-              d (.parse parser s)
-              _ (.accept d (v (:plantuml-url config)))
-              p (.render renderer d)]
-          p)))))
+              doc (.parse parser s)
+              _ (.accept doc (plantuml-visitor (:plantuml-url config)))]
+            (rewrite-hrefs 
+              (:blog-prefix config)
+              (.render renderer doc)))))))
 
 (defn init []
   (swap! markup-registry conj (markdown)))
