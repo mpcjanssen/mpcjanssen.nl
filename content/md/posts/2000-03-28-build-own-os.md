@@ -145,6 +145,7 @@ fields in the bootsector are defined as follows:
 
 ### DOS boot sector layout
 
+```
 >   Offset     Field description                                                      Length of field
 >   ---------- ---------------------------------------------------------------------- -----------------
 >   00h        Short (JMP xx , NOP) or long (JMP xxx) jump to begin of boot routine   3 bytes
@@ -164,6 +165,8 @@ fields in the bootsector are defined as follows:
 >   1FEh       55h                                                                    1 byte
 >   1FFh       AAh                                                                    1 byte
 >
+```
+
 OK that seems pretty straightforward, so let's try to put it to
 practice. In the following piece of code I am assuming you use a 3,5" HD
 disk.
@@ -266,7 +269,7 @@ is performed in the following way:
 
 For example if we take segment 9000h and offset 8000h (logical address
 9000:8000h) we get physical address
-$9000h*10h+8000h = 90000h + 8000h = 98000h$. (Note that this address
+`9000h*10h+8000h = 90000h + 8000h = 98000h`. (Note that this address
 refers to the same physical memory location as for instance 9300:5000h
 so segments overlap in real mode) To access different segments, 16-bit
 segment registers (such as cs, ds and es) are used so that the maximum
@@ -315,7 +318,6 @@ The segment descriptor (64 bits) contains information about the segment,
 like access rights, size, and base address. Let's take a look at a
 segment descriptors fields
 
-![Segment Descriptor](/img/SegmentDescriptor.png){width="100%"}
 
   ------- ----------------------------------------------------------------
   A       Available for use by programmer
@@ -364,50 +366,27 @@ Let's take a look at all those fields in a bit more detail.&lt;/p&gt;
 -   Type: Indicates the segment type (note that bits 10-8 have different
     names depending on bit 11 (code or data)) :
 
-    +------------+-----+------+------+------+---------------+---------------------------------+
-    | Hexadecima | 11  | 10   | 9    | 8    | Descriptor    | Description                     |
-    | l          |     |      |      |      | Type          |                                 |
-    +============+=====+======+======+======+===============+=================================+
-    |            |     | *E*  | *W*  | *A*  |               |                                 |
-    +------------+-----+------+------+------+---------------+---------------------------------+
-    | > 0        | 0   | 0    | 0    | 0    | Data          | Read-Only                       |
-    +------------+-----+------+------+------+---------------+---------------------------------+
-    | > 1        | 0   | 0    | 0    | 1    | Data          | Read-Only Accessed              |
-    +------------+-----+------+------+------+---------------+---------------------------------+
-    | > 2        | 0   | 0    | 1    | 0    | Data          | Read-Write                      |
-    +------------+-----+------+------+------+---------------+---------------------------------+
-    | > 3        | 0   | 0    | 1    | 1    | Data          | Read-Write Accessed             |
-    +------------+-----+------+------+------+---------------+---------------------------------+
-    | > 4        | 0   | 1    | 0    | 0    | Data          | Read-Only, Expand down          |
-    +------------+-----+------+------+------+---------------+---------------------------------+
-    | > 5        | 0   | 1    | 0    | 1    | Data          | Read-Only, Expand down,         |
-    |            |     |      |      |      |               | Accessed                        |
-    +------------+-----+------+------+------+---------------+---------------------------------+
-    | > 6        | 0   | 1    | 1    | 0    | Data          | Read-Write, Expand down         |
-    +------------+-----+------+------+------+---------------+---------------------------------+
-    | > 7        | 0   | 1    | 1    | 1    | Data          | Read-Write, Expand down,        |
-    |            |     |      |      |      |               | Accessed                        |
-    +------------+-----+------+------+------+---------------+---------------------------------+
-    |            |     | *C*  | *R*  | *A*  |               |                                 |
-    +------------+-----+------+------+------+---------------+---------------------------------+
-    | > 8        | 1   | 0    | 0    | 0    | Code          | Execute-Only                    |
-    +------------+-----+------+------+------+---------------+---------------------------------+
-    | > 9        | 1   | 0    | 0    | 1    | Code          | Execute-Only, accessed          |
-    +------------+-----+------+------+------+---------------+---------------------------------+
-    | > A        | 1   | 0    | 1    | 0    | Code          | Execute/Read                    |
-    +------------+-----+------+------+------+---------------+---------------------------------+
-    | > B        | 1   | 0    | 1    | 1    | Code          | Execute/Read,accessed           |
-    +------------+-----+------+------+------+---------------+---------------------------------+
-    | > C        | 1   | 1    | 0    | 0    | Code          | Execute-Only, conforming        |
-    +------------+-----+------+------+------+---------------+---------------------------------+
-    | > D        | 1   | 1    | 0    | 1    | Code          | Execute-Only, conforming,       |
-    |            |     |      |      |      |               | accessed                        |
-    +------------+-----+------+------+------+---------------+---------------------------------+
-    | > E        | 1   | 1    | 1    | 0    | Code          | Execute/Read-Only, conforming   |
-    +------------+-----+------+------+------+---------------+---------------------------------+
-    | > F        | 1   | 1    | 1    | 1    | Code          | Execute/Read-Only, conforming,  |
-    |            |     |      |      |      |               | accessed                        |
-    +------------+-----+------+------+------+---------------+---------------------------------+
+
+|  Hexadecimal | 11   | 10     | 9      | 8     | Descriptor     | Description                      |
+| ------------ |----- | ------ | ------ |------ |--------------- |--------------------------------- |
+|             |     | *E*  | *W*  | *A*  |               |                                 |
+|  > 0        | 0   | 0    | 0    | 0    | Data          | Read-Only                       |
+|  > 1        | 0   | 0    | 0    | 1    | Data          | Read-Only Accessed              |
+|  > 2        | 0   | 0    | 1    | 0    | Data          | Read-Write                      |
+|  > 3        | 0   | 0    | 1    | 1    | Data          | Read-Write Accessed             |
+|  > 4        | 0   | 1    | 0    | 0    | Data          | Read-Only, Expand down          |
+|  > 5        | 0   | 1    | 0    | 1    | Data          | Read-Only, Expand down, Accessed         |
+|  > 6        | 0   | 1    | 1    | 0    | Data          | Read-Write, Expand down         |
+|  > 7        | 0   | 1    | 1    | 1    | Data          | Read-Write, Expand down, Accessed       |
+|             |     | *C*  | *R*  | *A*  |               |                                 |
+|  > 8        | 1   | 0    | 0    | 0    | Code          | Execute-Only                    |
+|  > 9        | 1   | 0    | 0    | 1    | Code          | Execute-Only, accessed          |
+|  > A        | 1   | 0    | 1    | 0    | Code          | Execute/Read                    |
+|  > B        | 1   | 0    | 1    | 1    | Code          | Execute/Read,accessed           |
+|  > C        | 1   | 1    | 0    | 0    | Code          | Execute-Only, conforming        |
+|  > D        | 1   | 1    | 0    | 1    | Code          | Execute-Only, conforming, accessed      |
+|  > E        | 1   | 1    | 1    | 0    | Code          | Execute/Read-Only, conforming   |
+|  > F        | 1   | 1    | 1    | 1    | Code          | Execute/Read-Only, conforming, accessed |
 
 Because we would like to access a number of segments, we will need a lot
 of segment descriptors (especially in a multi-tasking Operating System).

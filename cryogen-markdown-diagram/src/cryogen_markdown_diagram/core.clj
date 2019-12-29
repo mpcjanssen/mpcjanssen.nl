@@ -4,18 +4,29 @@
   (:import 
    (cryogen_core.markup Markup)
    (org.commonmark.ext.heading.anchor HeadingAnchorExtension)
+   (org.commonmark.ext.gfm.tables TablesExtension)
    (org.commonmark.parser Parser)
    (org.commonmark.node AbstractVisitor)
    (org.commonmark.node FencedCodeBlock)
    (org.commonmark.node Image)
    (org.commonmark.renderer.html HtmlRenderer)))
 
-(def ^:private ^:static parser (.build (Parser/builder)))
-(def ^:private ^:static renderer 
- (.build 
-  (.extensions  
-   (HtmlRenderer/builder) 
-   (java.util.ArrayList. (list (HeadingAnchorExtension/create))))))
+(defn- add-extensions [builder]
+  (.extensions
+    builder
+    (java.util.ArrayList. 
+      (list
+        (HeadingAnchorExtension/create)
+        (TablesExtension/create)))))
+
+
+(def ^:private ^:static parser (-> (Parser/builder)
+                                   (add-extensions)
+                                   (.build)))
+
+(def ^:private ^:static renderer (-> (HtmlRenderer/builder)
+                                   (add-extensions)
+                                   (.build)))
 
 (def ^:private ^:static encoder  (net.sourceforge.plantuml.code.TranscoderSmart.))
 
