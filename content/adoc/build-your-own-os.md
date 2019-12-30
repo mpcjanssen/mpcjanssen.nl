@@ -1,7 +1,7 @@
-{:title "Building your own OS"
- :layout :post
- :tags  ["dev"]
- :toc true}
++++
+date = "2000-03-28"
+title = "Building your own OS"
++++
 
 If you want to make your own OS and you like all clear cut code which
 compiles and does everything you would have ever wanted well then look
@@ -32,7 +32,8 @@ have fun doing it. If you have any comments, suggestions or burning
 questions or if you want to point out some terrible mistakes I made,
 please feel free to contact me.
 
-## Things you should know or have to get started
+Things you should know or have to get started
+---------------------------------------------
 
 It is assumed you have a Pentium computer at your disposal (though a
 lot of stuff will work on a 386 as well). Further I use The Netwide
@@ -46,7 +47,8 @@ time, debug.exe (included in windows and dos) "installed" on your
 system. Well guess that's all so let's get dirty. And start with that
 magical process called booting.
 
-## Booting the PC and the boot sector
+Booting the PC and the boot sector
+----------------------------------
 
 When you switch on your computer, program execution starts at memory
 location `F000:FFF0`. (this is a real mode address, if you don't get that
@@ -71,13 +73,13 @@ boot sector which is 200h=512 bytes big) is loaded in memory at location
 so hard, was it ? So lets try to write or own boot sector which only
 displays:
 
-``` 
+``` {.sourceCode .text}
 NO BOOT DISK
 ```
 
 and then totally freezes. (to keep it simple) Here we go:
 
-``` nasm
+~~~nasm
 ;------------------------------------------------------------------------------------------ 
 ; dumbboot.asm                                  
 ; demonstrates getting control after the compu has booted   
@@ -116,7 +118,7 @@ begin_bootroutine:                 ;this is where the bootroutine starts
    times 510-($-$$) db 0           ;fill with zeroes until byte 510 of the boot sector
                                    ;See NASM doc for more info on $ and $$)
    dw 0xAA55                       ;write boot signature (actually goes in memory as 55h AAh)
-```
+~~~
 
 Got that? Well lets compile it using [NASM](http://www.nasm.us/)
 
@@ -130,7 +132,8 @@ headers. Now type (assuming you use A:)
 This writes your homemade bootsector to A:. (to use B: type w 100 1 0 1)
 Now reboot your PC and TADA we've grabbed control, isn't that great?
 
-## The DOS boot sector
+The DOS boot sector
+-------------------
 
 The previous boot sector has one big problem. DOS won't recognize the
 disk anymore. So if we would want to put a new bootsector at the disk,
@@ -145,7 +148,6 @@ fields in the bootsector are defined as follows:
 
 ### DOS boot sector layout
 
-```
 >   Offset     Field description                                                      Length of field
 >   ---------- ---------------------------------------------------------------------- -----------------
 >   00h        Short (JMP xx , NOP) or long (JMP xxx) jump to begin of boot routine   3 bytes
@@ -165,13 +167,11 @@ fields in the bootsector are defined as follows:
 >   1FEh       55h                                                                    1 byte
 >   1FFh       AAh                                                                    1 byte
 >
-```
-
 OK that seems pretty straightforward, so let's try to put it to
 practice. In the following piece of code I am assuming you use a 3,5" HD
 disk.
 
-```nasm
+``` {.sourceCode .nasm}
 ;------------------------------------------------------------------------------------------
 ; dosboot.asm
 ; demonstrates getting control after the compu has booted
@@ -234,7 +234,8 @@ boot sector. If you want more information check out Michael Tischer's
 book. OK please go to the toilet, take a snack, drink some coffee and
 then read on because we're going to look at Protected Mode!
 
-## Protected Mode, what is it all about?
+Protected Mode, what is it all about?
+-------------------------------------
 
 Although through the years most PC's have been equiped with more and
 more memory, all DOS programs still had to deal with the infamous 640 KB
@@ -252,7 +253,8 @@ want a codesegment of 4 GB? Do you want to put the entire Encyclopedia
 Brittanica in your datasegment? Well just do it, switch to Protected
 Mode (PM) and you've got access to all the memory you would ever want.
 
-## How the PC behaves in real mode
+How the PC behaves in real mode
+-------------------------------
 
 When you reboot the PC it enters a mode known as real mode. This mode
 gives maximum compatibility with the 8086 and some extra features (such
@@ -265,11 +267,11 @@ through a segment:offset address (the so called *logical address*).
 Calculation of the *physical address* (the actual byte number in memory)
 is performed in the following way:
 
-    physical address = 10h*segment+offset
+$$physical address = 10h*segment+offset$$
 
 For example if we take segment 9000h and offset 8000h (logical address
 9000:8000h) we get physical address
-`9000h*10h+8000h = 90000h + 8000h = 98000h`. (Note that this address
+$9000h*10h+8000h = 90000h + 8000h = 98000h$. (Note that this address
 refers to the same physical memory location as for instance 9300:5000h
 so segments overlap in real mode) To access different segments, 16-bit
 segment registers (such as cs, ds and es) are used so that the maximum
@@ -305,7 +307,8 @@ Now how can we access A31-A22 to get the 4 GB addressable memory space?
 You guessed it, by switching to protected mode. However in PM, memory
 management is quite a different ballplay so let's check it out.
 
-## How the PC behaves in Protected Mode
+How the PC behaves in Protected Mode
+------------------------------------
 
 ### Segmentation in Protected Mode
 
@@ -318,21 +321,21 @@ The segment descriptor (64 bits) contains information about the segment,
 like access rights, size, and base address. Let's take a look at a
 segment descriptors fields
 
-| Field    | Description
-| ------- | ----------------------------------------------------------------
-| A      | Available for use by programmer
-| Base   | Segment Base Address
-| DB     | Default operation size (0 = 16-bit segment; 1 = 32-bit segment)
-| DPL    | Descriptor privilege level
-| G       |Granularity
-| Limit  | Segment limit
-| P      | Segment present
-| S      | Descriptor type (0 = system; 1 = code or data)
-| Type   | Segment type
+![Segment Descriptor](/img/SegmentDescriptor.png){width="100%"}
 
+  ------- ----------------------------------------------------------------
+  A       Available for use by programmer
+  Base    Segment Base Address
+  DB      Default operation size (0 = 16-bit segment; 1 = 32-bit segment)
+  DPL     Descriptor privilege level
+  G       Granularity
+  Limit   Segment limit
+  P       Segment present
+  S       Descriptor type (0 = system; 1 = code or data)
+  Type    Segment type
+  ------- ----------------------------------------------------------------
 
-
-Let's take a look at all those fields in a bit more detail.
+Let's take a look at all those fields in a bit more detail.&lt;/p&gt;
 
 -   A: this bit is available for your own use, for instance to create
     your own virtual memory manager.
@@ -367,27 +370,50 @@ Let's take a look at all those fields in a bit more detail.
 -   Type: Indicates the segment type (note that bits 10-8 have different
     names depending on bit 11 (code or data)) :
 
-
-|  Hexadecimal | 11   | 10     | 9      | 8     | Descriptor     | Description                      |
-| ------------ |----- | ------ | ------ |------ |--------------- |--------------------------------- |
-|             |     | *E*  | *W*  | *A*  |               |                                 |
-|  > 0        | 0   | 0    | 0    | 0    | Data          | Read-Only                       |
-|  > 1        | 0   | 0    | 0    | 1    | Data          | Read-Only Accessed              |
-|  > 2        | 0   | 0    | 1    | 0    | Data          | Read-Write                      |
-|  > 3        | 0   | 0    | 1    | 1    | Data          | Read-Write Accessed             |
-|  > 4        | 0   | 1    | 0    | 0    | Data          | Read-Only, Expand down          |
-|  > 5        | 0   | 1    | 0    | 1    | Data          | Read-Only, Expand down, Accessed         |
-|  > 6        | 0   | 1    | 1    | 0    | Data          | Read-Write, Expand down         |
-|  > 7        | 0   | 1    | 1    | 1    | Data          | Read-Write, Expand down, Accessed       |
-|             |     | *C*  | *R*  | *A*  |               |                                 |
-|  > 8        | 1   | 0    | 0    | 0    | Code          | Execute-Only                    |
-|  > 9        | 1   | 0    | 0    | 1    | Code          | Execute-Only, accessed          |
-|  > A        | 1   | 0    | 1    | 0    | Code          | Execute/Read                    |
-|  > B        | 1   | 0    | 1    | 1    | Code          | Execute/Read,accessed           |
-|  > C        | 1   | 1    | 0    | 0    | Code          | Execute-Only, conforming        |
-|  > D        | 1   | 1    | 0    | 1    | Code          | Execute-Only, conforming, accessed      |
-|  > E        | 1   | 1    | 1    | 0    | Code          | Execute/Read-Only, conforming   |
-|  > F        | 1   | 1    | 1    | 1    | Code          | Execute/Read-Only, conforming, accessed |
+    +------------+-----+------+------+------+---------------+---------------------------------+
+    | Hexadecima | 11  | 10   | 9    | 8    | Descriptor    | Description                     |
+    | l          |     |      |      |      | Type          |                                 |
+    +============+=====+======+======+======+===============+=================================+
+    |            |     | *E*  | *W*  | *A*  |               |                                 |
+    +------------+-----+------+------+------+---------------+---------------------------------+
+    | > 0        | 0   | 0    | 0    | 0    | Data          | Read-Only                       |
+    +------------+-----+------+------+------+---------------+---------------------------------+
+    | > 1        | 0   | 0    | 0    | 1    | Data          | Read-Only Accessed              |
+    +------------+-----+------+------+------+---------------+---------------------------------+
+    | > 2        | 0   | 0    | 1    | 0    | Data          | Read-Write                      |
+    +------------+-----+------+------+------+---------------+---------------------------------+
+    | > 3        | 0   | 0    | 1    | 1    | Data          | Read-Write Accessed             |
+    +------------+-----+------+------+------+---------------+---------------------------------+
+    | > 4        | 0   | 1    | 0    | 0    | Data          | Read-Only, Expand down          |
+    +------------+-----+------+------+------+---------------+---------------------------------+
+    | > 5        | 0   | 1    | 0    | 1    | Data          | Read-Only, Expand down,         |
+    |            |     |      |      |      |               | Accessed                        |
+    +------------+-----+------+------+------+---------------+---------------------------------+
+    | > 6        | 0   | 1    | 1    | 0    | Data          | Read-Write, Expand down         |
+    +------------+-----+------+------+------+---------------+---------------------------------+
+    | > 7        | 0   | 1    | 1    | 1    | Data          | Read-Write, Expand down,        |
+    |            |     |      |      |      |               | Accessed                        |
+    +------------+-----+------+------+------+---------------+---------------------------------+
+    |            |     | *C*  | *R*  | *A*  |               |                                 |
+    +------------+-----+------+------+------+---------------+---------------------------------+
+    | > 8        | 1   | 0    | 0    | 0    | Code          | Execute-Only                    |
+    +------------+-----+------+------+------+---------------+---------------------------------+
+    | > 9        | 1   | 0    | 0    | 1    | Code          | Execute-Only, accessed          |
+    +------------+-----+------+------+------+---------------+---------------------------------+
+    | > A        | 1   | 0    | 1    | 0    | Code          | Execute/Read                    |
+    +------------+-----+------+------+------+---------------+---------------------------------+
+    | > B        | 1   | 0    | 1    | 1    | Code          | Execute/Read,accessed           |
+    +------------+-----+------+------+------+---------------+---------------------------------+
+    | > C        | 1   | 1    | 0    | 0    | Code          | Execute-Only, conforming        |
+    +------------+-----+------+------+------+---------------+---------------------------------+
+    | > D        | 1   | 1    | 0    | 1    | Code          | Execute-Only, conforming,       |
+    |            |     |      |      |      |               | accessed                        |
+    +------------+-----+------+------+------+---------------+---------------------------------+
+    | > E        | 1   | 1    | 1    | 0    | Code          | Execute/Read-Only, conforming   |
+    +------------+-----+------+------+------+---------------+---------------------------------+
+    | > F        | 1   | 1    | 1    | 1    | Code          | Execute/Read-Only, conforming,  |
+    |            |     |      |      |      |               | accessed                        |
+    +------------+-----+------+------+------+---------------+---------------------------------+
 
 Because we would like to access a number of segments, we will need a lot
 of segment descriptors (especially in a multi-tasking Operating System).
@@ -413,7 +439,7 @@ segments of 4 GB, a code and a data segment, which completely overlap in
 memory. (So it is still possible, though not advisable, to write self
 modifying code):
 
-``` .nasm
+``` {.sourceCode .nasm}
 gdtr                               ;this will be loaded in the GDTR
    dw gdt_end-gdt-1                ;length of gdt
    dd gdt                          ;linear, physical address of gdt 
@@ -597,7 +623,7 @@ some comments) I think Tran originally wrote this code for use in his
 PMode protected mode wrapper. The piece of code conains a function
 EnableA20 which should do exactly that. So here we go: &lt;/p&gt;
 
-``` .nasm
+``` {.sourceCode .nasm}
 enablea20kbwait:                      ;wait for safe to write to 8042
    xor cx,cx                          ;loop a maximum of FFFFh times
 enablea20kbwaitl0:
@@ -763,8 +789,7 @@ floppy disk? First of all the bootimage has to be read from the hard
 disk and stored in memory. Then the buffer containing the bootsector has
 to be written to the floppy disk.&lt;/p&gt;
 
-``` nasm
-------------------------------------------------------------------------------------------
+&lt;/p&gt;&lt;pre&gt;;------------------------------------------------------------------------------------------
 ; wbs.asm Write Boot Sector ; ; writes a binary file from harddisk to
 the bootsector of floppy 0 (a:) ; ; compile with NASM to binary file
 (nasm is assumed to be in your path) ; nasm wbs.asm -o wbs.com ; ;
@@ -829,8 +854,6 @@ Error:
 :   mov ah,0x09 mov dx,ErrorOpen int 0x21 jmp Exit
 
 section .bss Infile: resb 80 Handle: resb 1 FileBuffer: resb 0x200
-
-```
 &lt;/pre&gt;
 
 &lt;/p&gt;&lt;center&gt;&lt;h2&gt;11. All
