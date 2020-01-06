@@ -1,4 +1,5 @@
 (ns cryogen.core
+  (:gen-class)
   (:require [cryogen-core.compiler :refer [compile-assets-timed]]
             [cryogen-core.plugins :refer [load-plugins]]))
 

@@ -1,8 +1,8 @@
 {:title "Build your own OS"
  :layout :post
  :tags  ["dev"]
-:toc true}
-
+:toc false}
+:toc:
 If you want to make your own OS and you like all clear cut code which
 compiles and does everything you would have ever wanted well then look
 further (go see Linux). But if you want to build your own OS including

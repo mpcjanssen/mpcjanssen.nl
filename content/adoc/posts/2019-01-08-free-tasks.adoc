@@ -197,7 +197,7 @@ switch -exact -- $action {
 
 To register the handler use:
 
-[source,reg]
+[source,ini]
 ----
 REGEDIT4
 
