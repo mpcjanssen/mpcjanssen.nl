@@ -1,0 +1,31 @@
+{:title "Theory of dependencies"
+ :layout :post
+ :tags  ["ea"]
+ :toc true
+}
+
+== Statement
+
+- IT should model and reflect the dependencies and structures of the business (processes)
+- IT should not introduce artificial dependencies.
+  - These are usually introduced as part of rationalisation.
+
+
+== Rationale
+
+- A big part of managing IT is managing dependencies. The more dependencies, the more difficult this is.
+- Introducing an IT dependency (for example for rationalisation) without a corresponding business dependency will introduce friction to the independent business domains. This leads to planning difficulties between the different requirements. It will lead to special casing in code and business logic to combine the unrelated parts. 
+
+
+== Implications
+
+- IT rationalisation should always be preceded or accompanied by business process rationalisation.
+- It's OK to make copies if there is no real dependency.
+
+== DRY
+
+Don't repeat yourself, but be aware of _false_ repetitions. If two terms are similar or equal in the business context, but they are not dependent, then repeating them is not an actual repetition.
+
+The main litmus test here is:
+
+  | Will a change in one of the items always require a change in the other?
