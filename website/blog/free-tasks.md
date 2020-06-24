@@ -11,6 +11,8 @@
 Online task lists are dissappearing left and right (for example Astrid
 and Wunderlist). You want your tasks under your control which means:
 
+<!-- more -->
+
 1.  You have an open file format storing the tasks.
 2.  You can synchronize or serve the tasks with open source tools.
 

@@ -6,13 +6,6 @@ more {
     markup {(<a href="$link">$text</a>)}
     text {read more}
 }
-{sidebar note} {
-    enable 1
-    content {
-        <h3>About</h3>
-        This is the blog of the sample Tclssg project.
-    }
-}
 {head top} {
 <link rel="stylesheet" href="/vendor/highlightjs/styles/github.css">
 <link rel="stylesheet" href="/vendor/github.css">

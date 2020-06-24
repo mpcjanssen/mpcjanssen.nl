@@ -1,5 +1,4 @@
 {
-    title Blog
     presets blog
     visibleIn {
         sidebarLinks 0
@@ -12,4 +11,3 @@
         postTags 0
     }
 }
-This is your blog's index page.

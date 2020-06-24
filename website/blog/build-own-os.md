@@ -15,6 +15,8 @@ further (go see Linux). But if you want to build your own OS including
 booting, switching to PM etcetera etcetera, then this is the place to
 be!
 
+<!-- more -->
+
 Recently I started my own attempt at writing an OS, well you can't
 exactly call it that right now, it only boots from a floppy and switches
 to Protected Mode right now, but that was hard enough to figure out.
