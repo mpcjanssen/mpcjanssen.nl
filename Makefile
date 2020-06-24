@@ -1,13 +1,14 @@
-.PHONY: cli server sub
+.PHONY: deploy build open
 
-cli: sub
-	lein run
 
-sub:
-	lein sub install
-   
-server: sub
-	lein ring server
+deploy:
+	c:/Users/Mark/Src/site-tcl/scripts/tclssg/ssg.cmd build --plugins
+	c:/Users/Mark/Src/site-tcl/scripts/tclssg/ssg.cmd deploy-custom
 
-deploy: cli
-	scp -r public ssh.mpcjanssen.nl:/var/www/mpcjanssen/
+build:
+	c:/Users/Mark/Src/site-tcl/scripts/tclssg/ssg.cmd build --plugins --local
+
+
+open:
+	cmd /c start http://localhost
+

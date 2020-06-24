@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+
+<channel>
+<atom:link href="../../../blog/rss.xml" rel="self" type="application/rss+xml" />
+
+<title>SSG Test</title>
+<link>http://localhost:8080/blog/tags/tag/</link>
+<description></description>
+<language>en</language>
+<copyright><![CDATA[]]]></copyright>
+<lastBuildDate>Tue, 23 Jun 2020 10:00:51 GMT</lastBuildDate>
+<generator>Tclssg 2.0.0</generator>
+
+        <item>
+          <title><![CDATA[Test page 3]]></title>
+          <link>http://localhost:8080/blog/test-3/</link>
+          <guid>http://localhost:8080/blog/test-3/</guid>
+          <description>
+            <![CDATA[<p>Consequat consectetur elit exercitation. Excepteur consectetur proident elit velit est et laboris ex laboris deserunt consectetur in ex aliquip.</p>
+
+(<a href="http://localhost:8080/blog/test-3/">read more</a>)]]>
+          </description>
+          <pubDate>Tue, 06 May 2014 17:08:00 GMT</pubDate>
+        </item>
+    
+</channel>
+</rss>

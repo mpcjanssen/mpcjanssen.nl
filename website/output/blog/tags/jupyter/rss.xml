@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+
+<channel>
+<atom:link href="../../../blog/rss.xml" rel="self" type="application/rss+xml" />
+
+<title>The knights who say NIH</title>
+<link>https://mpcjanssen.nl/blog/tags/tag/</link>
+<description></description>
+<language>en</language>
+<copyright><![CDATA[]]]></copyright>
+<lastBuildDate>Wed, 24 Jun 2020 11:09:58 GMT</lastBuildDate>
+<generator>Tclssg 2.0.0</generator>
+
+        <item>
+          <title><![CDATA[Tcl Jupyter Kernel]]></title>
+          <link>https://mpcjanssen.nl/blog/pygmentize/</link>
+          <guid>https://mpcjanssen.nl/blog/pygmentize/</guid>
+          <description>
+            <![CDATA[<p>Embedding plantuml in tclssg</p>
+
+(<a href="https://mpcjanssen.nl/blog/pygmentize/">read more</a>)]]>
+          </description>
+          <pubDate>Mon, 22 Jun 2020 22:00:00 GMT</pubDate>
+        </item>
+    
+        <item>
+          <title><![CDATA[Tcl Jupyter Kernel]]></title>
+          <link>https://mpcjanssen.nl/blog/tcljupyter/</link>
+          <guid>https://mpcjanssen.nl/blog/tcljupyter/</guid>
+          <description>
+            <![CDATA[<p>Embedding plantuml in tclssg</p>
+
+(<a href="https://mpcjanssen.nl/blog/tcljupyter/">read more</a>)]]>
+          </description>
+          <pubDate>Mon, 22 Jun 2020 22:00:00 GMT</pubDate>
+        </item>
+    
+</channel>
+</rss>

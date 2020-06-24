@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<link rel="stylesheet" href="/vendor/highlightjs/styles/github.css">
+<link rel="stylesheet" href="/vendor/github.css">
+<script src="/vendor/highlightjs/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+      <meta name="description" content="Random ramblings about software development and other subjects.">
+    
+
+    
+      <link rel="canonical" href="https://mpcjanssen.nl/blog/tcljupyter/index.html">
+    
+    
+    
+    
+    
+      <link rel="" type="application/rss+xml" href="../../blog/rss.xml">
+    
+    
+      <meta name="robots" content="noindex">
+    
+    <title>Tcl Jupyter Kernel | The knights who say NIH</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="../../vendor/bootstrap/css/bootstrap.min.css">
+    <!-- Bootstrap theme -->
+    
+      
+      <link rel="stylesheet" href="../../vendor/bootstrap/css/bootstrap-theme.min.css">
+    
+    <!-- Custom stylesheets, if any -->
+    
+      <link href="../../tclssg.css" rel="stylesheet">
+    
+    
+  </head>
+
+  <body>
+    
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../..">The knights who say NIH</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+          
+            <li><a href="../..">Home</a></li>
+          
+            <li><a href="../../blog">Blog</a></li>
+          
+            <li><a href="../../about">About</a></li>
+          
+            <li><a href="/artifacts/.">Artifacts</a></li>
+          
+          </ul>
+        
+          <ul class="nav navbar-nav navbar-right">
+            <li><a rel="alternate" type="application/rss+xml" href="../../blog/rss.xml">RSS</a></li>
+          </ul>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+
+    <main class="container">
+      <div class="row">
+        
+          
+          <section class="col-md-8">
+            <header><h1 class="page-title">Tcl Jupyter Kernel</h1><div class="page-info"><address class="author">Mark Janssen</address>Published <time datetime="2020-06-23" class="date">2020-06-23</time></div></header><p>Embedding plantuml in tclssg</p>
+
+<!-- more -->
+
+<pre><code>set a 4
+puts ok</code></pre>
+
+<pre><code>A -&gt; B: hello world</code></pre>
+
+<div><?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="393px" preserveAspectRatio="none" style="width:356px;height:393px;" version="1.1" viewBox="0 0 356 393" width="356px" zoomAndPan="magnify"><defs><filter height="300%" id="f19qqn7cgqa9ae" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><rect fill="#FFFFFF" filter="url(#f19qqn7cgqa9ae)" height="116.5313" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="307.5" y="143.9922"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="44" x2="44" y1="54.5938" y2="336.7891"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="127.5" x2="127.5" y1="54.5938" y2="336.7891"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="229" x2="229" y1="54.5938" y2="336.7891"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="312" x2="312" y1="54.5938" y2="336.7891"/><rect fill="#FEFECE" filter="url(#f19qqn7cgqa9ae)" height="46.5938" style="stroke: #A80036; stroke-width: 1.5;" width="69" x="8" y="3"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="39" x="23" y="22.9951">Client</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="55" x="15" y="39.292">Session</text><rect fill="#FEFECE" filter="url(#f19qqn7cgqa9ae)" height="46.5938" style="stroke: #A80036; stroke-width: 1.5;" width="69" x="8" y="335.7891"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="39" x="23" y="355.7842">Client</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="55" x="15" y="372.0811">Session</text><rect fill="#FEFECE" filter="url(#f19qqn7cgqa9ae)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="58" x="96.5" y="19.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="44" x="103.5" y="39.292">Kernel</text><rect fill="#FEFECE" filter="url(#f19qqn7cgqa9ae)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="58" x="96.5" y="335.7891"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="44" x="103.5" y="355.7842">Kernel</text><rect fill="#FEFECE" filter="url(#f19qqn7cgqa9ae)" height="46.5938" style="stroke: #A80036; stroke-width: 1.5;" width="69" x="193" y="3"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="55" x="200" y="22.9951">Session</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="49" x="203" y="39.292">Thread</text><rect fill="#FEFECE" filter="url(#f19qqn7cgqa9ae)" height="46.5938" style="stroke: #A80036; stroke-width: 1.5;" width="69" x="193" y="335.7891"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="55" x="200" y="355.7842">Session</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="49" x="203" y="372.0811">Thread</text><rect fill="#FEFECE" filter="url(#f19qqn7cgqa9ae)" height="46.5938" style="stroke: #A80036; stroke-width: 1.5;" width="69" x="276" y="3"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="55" x="283" y="22.9951">Session</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="40" x="290.5" y="39.292">Interp</text><rect fill="#FEFECE" filter="url(#f19qqn7cgqa9ae)" height="46.5938" style="stroke: #A80036; stroke-width: 1.5;" width="69" x="276" y="335.7891"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="55" x="283" y="355.7842">Session</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="40" x="290.5" y="372.0811">Interp</text><rect fill="#FFFFFF" filter="url(#f19qqn7cgqa9ae)" height="116.5313" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="307.5" y="143.9922"/><polygon fill="#A80036" points="115.5,81.7266,125.5,85.7266,115.5,89.7266,119.5,85.7266" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="44.5" x2="121.5" y1="85.7266" y2="85.7266"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="49" x="51.5" y="80.6606">request</text><polygon fill="#A80036" points="217.5,110.8594,227.5,114.8594,217.5,118.8594,221.5,114.8594" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="127.5" x2="223.5" y1="114.8594" y2="114.8594"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="78" x="134.5" y="109.7935">handle_msg</text><polygon fill="#A80036" points="295.5,139.9922,305.5,143.9922,295.5,147.9922,299.5,143.9922" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="229.5" x2="301.5" y1="143.9922" y2="143.9922"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="26" x="236.5" y="138.9263">eval</text><polygon fill="#A80036" points="240.5,169.125,230.5,173.125,240.5,177.125,236.5,173.125" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="234.5" x2="306.5" y1="173.125" y2="173.125"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="44" x="246.5" y="168.0591">display</text><polygon fill="#A80036" points="138.5,198.2578,128.5,202.2578,138.5,206.2578,134.5,202.2578" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="132.5" x2="228.5" y1="202.2578" y2="202.2578"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="44" x="144.5" y="197.1919">display</text><polygon fill="#A80036" points="55.5,227.3906,45.5,231.3906,55.5,235.3906,51.5,231.3906" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="49.5" x2="126.5" y1="231.3906" y2="231.3906"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="44" x="61.5" y="226.3247">display</text><polygon fill="#A80036" points="240.5,256.5234,230.5,260.5234,240.5,264.5234,236.5,260.5234" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="234.5" x2="311.5" y1="260.5234" y2="260.5234"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="36" x="246.5" y="255.4575">result</text><polygon fill="#A80036" points="138.5,285.6563,128.5,289.6563,138.5,293.6563,134.5,289.6563" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="132.5" x2="228.5" y1="289.6563" y2="289.6563"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="36" x="144.5" y="284.5903">result</text><polygon fill="#A80036" points="55.5,314.7891,45.5,318.7891,55.5,322.7891,51.5,318.7891" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="49.5" x2="126.5" y1="318.7891" y2="318.7891"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="59" x="61.5" y="313.7231">response</text><!--
+@startuml
+participant "Client\nSession" as CS
+participant "Kernel" as K
+participant "Session\nThread" as ST
+participant "Session\nInterp" as SI
+
+CS - -> K : request
+
+K - -> ST: handle_msg
+ST -> SI: eval
+activate SI
+SI - -> ST: display
+ST - -> K: display
+K - -> CS: display
+SI -> ST: result
+deactivate SI
+ST - -> K: result
+CS <- - K : response
+@enduml
+
+PlantUML version 1.2019.06(Fri May 24 19:10:25 CEST 2019)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 11.0.7+10-post-Ubuntu-2ubuntu218.04
+Operating System: Linux
+OS Version: 5.3.0-46-lowlatency
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg></div>
+<nav class="container-fluid tags">Tagged: <ul><li class="tag"><a href="../../blog/tags/jupyter/">jupyter</a></li> <li class="tag"><a href="../../blog/tags/tcl/">tcl</a></li></ul></nav><!-- tags -->
+            
+          </section>
+          <aside class="col-md-4 well content">
+            <div class="sidebar-note">
+        <h3>About</h3>
+        This is the blog of the sample Tclssg project.
+    </div><!-- sidebar-note -->
+            <nav class="sidebar-links"><h3>Posts</h3><ul><li><a href="../../blog/pygmentize/">Tcl Jupyter Kernel</a></li><li><a href="../../blog/tcljupyter/">Tcl Jupyter Kernel</a></li><li><a href="../../blog/tclssg-plantuml/">Adding code highlight to TclSSG</a></li><li><a href="../../blog/free-tasks/">Using open source for free tasks</a></li><li><a href="../../blog/build-own-os/">Building your own OS</a></li></ul></nav><!-- sidebar-links -->
+            <nav class="tag-cloud"><h3>Tags</h3><ul><li><a href="../../blog/tags/a-long-tag-with-spaces/">a long tag with spaces</a></li><li><a href="../../blog/tags/gtd/">gtd</a></li><li><a href="../../blog/tags/jupyter/">jupyter</a></li><li><a href="../../blog/tags/tcl/">tcl</a></li><li><a href="../../blog/tags/tclssg/">tclssg</a></li><li><a href="../../blog/tags/test/">test</a></li></ul></nav><!-- tag-cloud -->
+          </aside>
+         
+        <div>
+
+        </div>
+      </div>
+
+
+      
+
+      <footer class="footer">
+        <div class="powered-by"><small>Powered by <a href="https://github.com/tclssg/tclssg">Tclssg</a> and <a href="http://getbootstrap.com/">Bootstrap</a></small></div>
+      </footer>
+
+    </main><!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../vendor/jquery/jquery.min.js"></script>
+    <script src="../../vendor/bootstrap/js/bootstrap.min.js"></script>
+    
+</html>

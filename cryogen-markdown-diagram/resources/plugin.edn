@@ -1,2 +1,0 @@
-{:description "Markdown parser (diagram support)"
-:init cryogen-markdown-diagram.core/init}

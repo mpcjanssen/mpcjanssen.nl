@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+
+<channel>
+<atom:link href="../../../blog/rss.xml" rel="self" type="application/rss+xml" />
+
+<title>SSG Test</title>
+<link>http://localhost:8080/blog/tags/tag/</link>
+<description></description>
+<language>en</language>
+<copyright><![CDATA[]]]></copyright>
+<lastBuildDate>Tue, 23 Jun 2020 10:35:53 GMT</lastBuildDate>
+<generator>Tclssg 2.0.0</generator>
+
+        <item>
+          <title><![CDATA[Embedding plantuml in a tclssg]]></title>
+          <link>http://localhost:8080/blog/tclssg-plantuml/</link>
+          <guid>http://localhost:8080/blog/tclssg-plantuml/</guid>
+          <description>
+            <![CDATA[<p>Embedding plantuml in tclssg</p>
+
+(<a href="http://localhost:8080/blog/tclssg-plantuml/">read more</a>)]]>
+          </description>
+          <pubDate>Mon, 22 Jun 2020 22:00:00 GMT</pubDate>
+        </item>
+    
+</channel>
+</rss>

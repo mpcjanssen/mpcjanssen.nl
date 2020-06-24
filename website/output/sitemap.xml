@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<url>
+  <loc>https://mpcjanssen.nl/website/output/about/index.html</loc>
+</url>
+<url>
+  <loc>https://mpcjanssen.nl/website/output/blog/build-own-os/index.html</loc>
+  <lastmod>2014-01-02</lastmod>
+</url>
+<url>
+  <loc>https://mpcjanssen.nl/website/output/blog/free-tasks/index.html</loc>
+  <lastmod>2019-01-08</lastmod>
+</url>
+<url>
+  <loc>https://mpcjanssen.nl/website/output/blog/index.html</loc>
+</url>
+<url>
+  <loc>https://mpcjanssen.nl/website/output/blog/page/2/index.html</loc>
+</url>
+<url>
+  <loc>https://mpcjanssen.nl/website/output/blog/page/3/index.html</loc>
+</url>
+<url>
+  <loc>https://mpcjanssen.nl/website/output/blog/page/4/index.html</loc>
+</url>
+<url>
+  <loc>https://mpcjanssen.nl/website/output/blog/page/5/index.html</loc>
+</url>
+<url>
+  <loc>https://mpcjanssen.nl/website/output/blog/pygmentize/index.html</loc>
+  <lastmod>2020-06-23</lastmod>
+</url>
+<url>
+  <loc>https://mpcjanssen.nl/website/output/blog/tcljupyter/index.html</loc>
+  <lastmod>2020-06-23</lastmod>
+</url>
+<url>
+  <loc>https://mpcjanssen.nl/website/output/blog/tclssg-plantuml/index.html</loc>
+  <lastmod>2020-06-23</lastmod>
+</url>
+<url>
+  <loc>https://mpcjanssen.nl/website/output/index.html</loc>
+</url>
+</urlset>

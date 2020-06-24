@@ -1,0 +1,19 @@
+@startuml
+participant "Client\nSession" as CS
+participant "Kernel" as K
+participant "Session\nThread" as ST
+participant "Session\nInterp" as SI
+
+CS --> K : request
+
+K --> ST: handle_msg
+ST -> SI: eval
+activate SI
+SI --> ST: display
+ST --> K: display
+K --> CS: display
+SI -> ST: result
+deactivate SI
+ST --> K: result
+CS <-- K : response
+@enduml

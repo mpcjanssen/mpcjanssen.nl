@@ -1,2 +1,0 @@
-{:description "Asciidoctor parser (diagram support)"
- :init cryogen-asciidoctor-diagram.core/init}

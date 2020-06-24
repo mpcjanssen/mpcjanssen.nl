@@ -1,0 +1,27 @@
+websiteTitle {The knights who say NIH}
+description {Random ramblings about software development and other subjects.}
+locale en_US
+comments {
+    enable 0
+    engine none
+    disqus {
+        shortname {}
+    }
+}
+navbar {
+    items {
+        Home {}
+        Blog blog/
+        About about
+        Artifacts /artifacts/.
+    }
+}
+{sidebar note enable} 0
+bootstrap {
+    version 3
+    theme vendor/bootstrap/css/bootstrap-theme.min.css
+}
+customCSS {
+    tclssg.css
+}
+imagePath /images
