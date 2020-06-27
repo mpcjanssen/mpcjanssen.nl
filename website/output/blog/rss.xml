@@ -5,68 +5,80 @@
 <atom:link href="../blog/rss.xml" rel="self" type="application/rss+xml" />
 
 <title>The knights who say NIH</title>
-<link>https://mpcjanssen.nl/blog/</link>
+<link>http://localhost:80/blog/</link>
 <description></description>
 <language>en</language>
 <copyright><![CDATA[]]]></copyright>
-<lastBuildDate>Wed, 24 Jun 2020 11:50:52 GMT</lastBuildDate>
+<lastBuildDate>Sat, 27 Jun 2020 09:43:16 GMT</lastBuildDate>
 <generator>Tclssg 2.0.0</generator>
 
         <item>
-          <title><![CDATA[Tcl Jupyter Kernel]]></title>
-          <link>https://mpcjanssen.nl/blog/pygmentize/</link>
-          <guid>https://mpcjanssen.nl/blog/pygmentize/</guid>
+          <title><![CDATA[Test Mermaid]]></title>
+          <link>http://localhost:80/blog/mermaid/</link>
+          <guid>http://localhost:80/blog/mermaid/</guid>
           <description>
-            <![CDATA[<p>Embedding plantuml in tclssg</p>
+            <![CDATA[<p>Test</p>
 
-(<a href="https://mpcjanssen.nl/blog/pygmentize/">read more</a>)]]>
+(<a href="http://localhost:80/blog/mermaid/">read more</a>)]]>
           </description>
           <pubDate>Mon, 22 Jun 2020 22:00:00 GMT</pubDate>
         </item>
     
         <item>
           <title><![CDATA[Tcl Jupyter Kernel]]></title>
-          <link>https://mpcjanssen.nl/blog/tcljupyter/</link>
-          <guid>https://mpcjanssen.nl/blog/tcljupyter/</guid>
+          <link>http://localhost:80/blog/pygmentize/</link>
+          <guid>http://localhost:80/blog/pygmentize/</guid>
           <description>
             <![CDATA[<p>Embedding plantuml in tclssg</p>
 
-(<a href="https://mpcjanssen.nl/blog/tcljupyter/">read more</a>)]]>
+(<a href="http://localhost:80/blog/pygmentize/">read more</a>)]]>
+          </description>
+          <pubDate>Mon, 22 Jun 2020 22:00:00 GMT</pubDate>
+        </item>
+    
+        <item>
+          <title><![CDATA[Tcl Jupyter Kernel]]></title>
+          <link>http://localhost:80/blog/tcljupyter/</link>
+          <guid>http://localhost:80/blog/tcljupyter/</guid>
+          <description>
+            <![CDATA[<p>Embedding plantuml in tclssg</p>
+
+(<a href="http://localhost:80/blog/tcljupyter/">read more</a>)]]>
           </description>
           <pubDate>Mon, 22 Jun 2020 22:00:00 GMT</pubDate>
         </item>
     
         <item>
           <title><![CDATA[Adding code highlight to TclSSG]]></title>
-          <link>https://mpcjanssen.nl/blog/tclssg-plantuml/</link>
-          <guid>https://mpcjanssen.nl/blog/tclssg-plantuml/</guid>
+          <link>http://localhost:80/blog/tclssg-plantuml/</link>
+          <guid>http://localhost:80/blog/tclssg-plantuml/</guid>
           <description>
             <![CDATA[<p>Out of the box, TclSSG doesn't support code highlighting. Adding it is trivial though.</p>
 
-(<a href="https://mpcjanssen.nl/blog/tclssg-plantuml/">read more</a>)]]>
+(<a href="http://localhost:80/blog/tclssg-plantuml/">read more</a>)]]>
           </description>
           <pubDate>Mon, 22 Jun 2020 22:00:00 GMT</pubDate>
         </item>
     
         <item>
           <title><![CDATA[Using open source for free tasks]]></title>
-          <link>https://mpcjanssen.nl/blog/free-tasks/</link>
-          <guid>https://mpcjanssen.nl/blog/free-tasks/</guid>
+          <link>http://localhost:80/blog/free-tasks/</link>
+          <guid>http://localhost:80/blog/free-tasks/</guid>
           <description>
             <![CDATA[<h2>Why all the effort?</h2>
 
 <p>Online task lists are dissappearing left and right (for example Astrid
 and Wunderlist). You want your tasks under your control which means:</p>
 
-(<a href="https://mpcjanssen.nl/blog/free-tasks/">read more</a>)]]>
+(<a href="http://localhost:80/blog/free-tasks/">read more</a>)]]>
           </description>
           <pubDate>Mon, 07 Jan 2019 23:00:00 GMT</pubDate>
         </item>
     
         <item>
           <title><![CDATA[Building your own OS]]></title>
-          <link>https://mpcjanssen.nl/blog/build-own-os/</link>
-          <guid>https://mpcjanssen.nl/blog/build-own-os/</guid>
+          <link>http://localhost:80/blog/build-own-os/</link>
+          <guid>http://localhost:80/blog/build-own-os/</guid>
           <description>
             <![CDATA[<p>If you want to make your own OS and you like all clear cut code which
 compiles and does everything you would have ever wanted well then look
@@ -74,7 +86,7 @@ further (go see Linux). But if you want to build your own OS including
 booting, switching to PM etcetera etcetera, then this is the place to
 be!</p>
 
-(<a href="https://mpcjanssen.nl/blog/build-own-os/">read more</a>)]]>
+(<a href="http://localhost:80/blog/build-own-os/">read more</a>)]]>
           </description>
           <pubDate>Wed, 01 Jan 2014 23:00:00 GMT</pubDate>
         </item>

@@ -5,21 +5,21 @@
 <atom:link href="../../../blog/rss.xml" rel="self" type="application/rss+xml" />
 
 <title>The knights who say NIH</title>
-<link>https://mpcjanssen.nl/blog/tags/tag/</link>
+<link>http://localhost:80/blog/tags/tag/</link>
 <description></description>
 <language>en</language>
 <copyright><![CDATA[]]]></copyright>
-<lastBuildDate>Wed, 24 Jun 2020 11:50:52 GMT</lastBuildDate>
+<lastBuildDate>Sat, 27 Jun 2020 09:43:16 GMT</lastBuildDate>
 <generator>Tclssg 2.0.0</generator>
 
         <item>
           <title><![CDATA[Adding code highlight to TclSSG]]></title>
-          <link>https://mpcjanssen.nl/blog/tclssg-plantuml/</link>
-          <guid>https://mpcjanssen.nl/blog/tclssg-plantuml/</guid>
+          <link>http://localhost:80/blog/tclssg-plantuml/</link>
+          <guid>http://localhost:80/blog/tclssg-plantuml/</guid>
           <description>
             <![CDATA[<p>Out of the box, TclSSG doesn't support code highlighting. Adding it is trivial though.</p>
 
-(<a href="https://mpcjanssen.nl/blog/tclssg-plantuml/">read more</a>)]]>
+(<a href="http://localhost:80/blog/tclssg-plantuml/">read more</a>)]]>
           </description>
           <pubDate>Mon, 22 Jun 2020 22:00:00 GMT</pubDate>
         </item>
